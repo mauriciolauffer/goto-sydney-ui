@@ -1,0 +1,11 @@
+<mvc:View controllerName="mlauffer.goto.sydney.australia.controller.NoMap"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m">
+    <MessagePage id="page"
+          busy="{mapView>/busy}"
+          busyIndicatorDelay="0"
+          navButtonPress="onNavBack"
+          showNavButton="{device>/system/phone}"
+          title="{i18n>noMapTitle}"
+          text="{i18n>noMap}" description="" icon="sap-icon://map-2" />
+</mvc:View>

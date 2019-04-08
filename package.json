@@ -1,0 +1,48 @@
+{
+  "name": "goto-sydney-ui",
+  "version": "0.0.2",
+  "author": "Mauricio Lauffer",
+  "private": true,
+  "description": "goto.Sydney Public Transport",
+  "dependencies": {
+    "@openui5/sap.m": "^1.62.1",
+    "@openui5/sap.ui.core": "^1.62.1",
+    "@openui5/sap.ui.layout": "^1.62.1",
+    "@openui5/sap.ui.support": "^1.62.1",
+    "@openui5/themelib_sap_belize": "^1.62.1",
+    "openui5-model-json-crud": "^0.0.8"
+  },
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "karma": "^4.0.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage": "~1.1.2",
+    "karma-coveralls": "^2.1.0",
+    "karma-ui5": "^1.0.0",
+    "karma-qunit": "~2.1.0",
+    "karma-sinon": "^1.0.5",
+    "qunit": "^2.9.2",
+    "sinon": "^7.2.4"
+  },
+  "scripts": {
+    "start": "ui5 serve",
+    "build": "ui5 build",
+    "build-self": "ui5 build self-contained --include-task=buildThemes",
+    "lint": "eslint ./webapp",
+    "test": "karma start",
+    "test-opa": "karma start karma.opa.conf",
+    "test-opa-phone": "karma start karma.opa-phone.conf",
+    "test-opa-sa": "karma start karma.opa-sa.conf",
+    "test-ci": "karma start karma.ci.conf",
+    "test-e2e": "uiveri5 uiveri5.conf.js",
+    "preversion": "npm run test-ci",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mauriciolauffer/goto-sydney-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mauriciolauffer/goto-sydney-ui/issues"
+  }
+}

@@ -1,0 +1,15 @@
+<mvc:View controllerName="mlauffer.goto.sydney.australia.controller.Map"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m">
+    <Page id="page"
+          busy="{mapView>/busy}"
+          busyIndicatorDelay="0"
+          navButtonPress="onNavBack"
+          showNavButton="{device>/system/phone}"
+          title="{i18n>mapTitle}"
+          titleLevel="H1">
+        <content>
+            <HBox id="mapCanvas" fitContainer="true" width="100%" />
+        </content>
+    </Page>
+</mvc:View>

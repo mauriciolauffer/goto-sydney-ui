@@ -1,0 +1,46 @@
+<mvc:View controllerName="mlauffer.goto.sydney.australia.controller.Stops"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m">
+    <Page id="page" busy="{stopsView>/busy}" busyIndicatorDelay="0" title="{stopsView>/title}" titleLevel="H1"
+          navButtonPress="onNavBack"
+          showNavButton="true"
+          showFooter="{= ${device>/system/phone} }">
+        <headerContent>
+            <Button visible="{stopsView>/isOffline}" text="{i18n>btOffline}" icon="sap-icon://disconnected"
+                    tooltip="{i18n>btOfflineTooltip}" press="onPressOffline" />
+        </headerContent>
+        <content>
+            <List id="list"
+                  items="{/Stops}"
+                  busyIndicatorDelay="0"
+                  mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+                  growing="true"
+                  growingScrollToLoad="true"
+                  updateStarted="onUpdateStarted"
+                  updateFinished="onUpdateFinished"
+                  selectionChange="onSelectionChange">
+                <infoToolbar>
+                    <Toolbar id="filterBar" visible="true">
+                        <Title id="filterBarLabel" text="{stopsView>/filterBarLabel}"/>
+                    </Toolbar>
+                </infoToolbar>
+                <items>
+                    <ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
+                                    press="onSelectionChange"
+                                    title="{stop_name}"
+                                    icon="{path: 'wheelchair_boarding', formatter:'.formatter.hasAccessibilityAccess'}"
+                                    iconDensityAware="false"
+                                    intro="{stop_id}">
+                    </ObjectListItem>
+                </items>
+            </List>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button id="btMap" text="{i18n>btMap}" icon="sap-icon://map" press="onPressMap" tooltip="{i18n>btMapTooltip}"/>
+                <ToolbarSpacer />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

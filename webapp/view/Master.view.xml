@@ -1,0 +1,61 @@
+<mvc:View controllerName="mlauffer.goto.sydney.australia.controller.Master"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m">
+    <Page id="page" busy="{masterView>/busy}" busyIndicatorDelay="0" title="{masterView>/title}" titleLevel="H1"
+          showFooter="{= ${device>/system/phone} }">
+        <headerContent>
+            <Button visible="{masterView>/isOffline}" text="{i18n>btOffline}" icon="sap-icon://disconnected"
+                    tooltip="{i18n>btOfflineTooltip}" press="onPressOffline" />
+        </headerContent>
+        <subHeader>
+            <Bar id="headerBar">
+                <contentMiddle>
+                    <SearchField id="searchField"
+                                 tooltip="{i18n>masterSearchTooltip}"
+                                 width="100%"
+                                 search="onSearch">
+                    </SearchField>
+                </contentMiddle>
+            </Bar>
+        </subHeader>
+        <content>
+            <PullToRefresh id="pullToRefresh" visible="{device>/support/touch}" refresh="onRefresh" />
+            <List id="list"
+                  items="{path: '/Routes',
+                  sorter: [
+                  { path: 'agency_id', descending: false, group: true },
+                  { path: 'route_short_name' }
+                  ],
+                  groupHeaderFactory: '.getGroupHeader'}"
+                  busyIndicatorDelay="0"
+                  busy="{masterView>/busy}"
+                  mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+                  growing="true"
+                  growingScrollToLoad="true"
+                  updateStarted="onUpdateStarted"
+                  updateFinished="onUpdateFinished"
+                  selectionChange="onSelectionChange">
+                <infoToolbar>
+                    <Toolbar id="filterBar" active="true" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
+                        <Title id="filterBarLabel" text="{masterView>/filterBarLabel}"/>
+                    </Toolbar>
+                </infoToolbar>
+                <items>
+                    <ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
+                                    press="onSelectionChange"
+                                    icon="{path: 'route_type', formatter:'.formatter.getModalIcon'}"
+                                    iconDensityAware="false"
+                                    title="{route_short_name} {route_long_name}">
+                    </ObjectListItem>
+                </items>
+            </List>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button id="btMap" text="{i18n>btMap}" icon="sap-icon://map" press="onPressMap" tooltip="{i18n>btMapTooltip}"/>
+                <ToolbarSpacer />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

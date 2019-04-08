@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core">
+	<Dialog id="timetableDialog" title="{timetableView>/dialogTitle}" stretch="true"
+			afterClose="onCloseTimetableDialog"
+			afterOpen="onOpenTimetableDialog">
+		<Table id="timetable" items="{path:'/StopTimes', sort:{path:'arrival_time'}}"
+			   updateFinished="onTimeTableUpdateFinished" alternateRowColors="true" sticky="ColumnHeaders">
+			<infoToolbar>
+				<Toolbar id="filterBar" visible="false">
+					<Title id="filterBarLabel" text="{timetableView>/filterBarLabel}"/>
+				</Toolbar>
+			</infoToolbar>
+			<columns>
+				<Column hAlign="Center" vAlign="Middle">
+					<Label text="{i18n>timetableScheduled}"/>
+				</Column>
+				<Column hAlign="Center" vAlign="Middle" demandPopin="true">
+					<Label text="{i18n>timetableHeadsign}"/>
+				</Column>
+				<Column hAlign="Center" vAlign="Middle">
+					<Label text="{i18n>timetableAccessibility}"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{path:'arrival_time', formatter:'.formatter.formatTime'}"/>
+						<ObjectAttribute title="{path:'trip_id', formatter:'.formatter.getTripRouteShortName'}"
+										 text="{path:'trip_id', formatter:'.formatter.getTripHeadsign'}"/>
+						<Image src="{path: 'trip_id', formatter:'.formatter.hasAccessibilityAccess'}" width="32px" height="32px"/>
+						<!--<Image src="{path: 'drop_off_type', formatter:'.formatter.hasAccessibilityAccess'}" width="32px" height="32px"/>-->
+						<Text text="{path:'trip_id', formatter:'.formatter.getTripHeadsign'}"/>
+						<Image src="{path:'trip_id', formatter:'.formatter.getNswModalIconByTripId'}" width="32px" height="32px" densityAware="false"/>
+						<Text text="{path:'arrival_time', formatter:'.formatter.getTimeLeftForArrival'}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<buttons>
+			<Button text="{i18n>btClose}" press="onPressCloseTimetableDialog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

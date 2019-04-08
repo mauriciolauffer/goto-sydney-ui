@@ -1,0 +1,10 @@
+<mvc:View controllerName="mlauffer.goto.sydney.australia.controller.App"
+          displayBlock="true"
+          busy="{appView>/busy}"
+          busyIndicatorDelay="0"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m">
+    <Shell id="shell" appWidthLimited="false">
+        <SplitApp id="idAppControl" />
+    </Shell>
+</mvc:View>

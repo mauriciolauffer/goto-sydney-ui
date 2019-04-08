@@ -1,0 +1,47 @@
+{
+  "name": "goto.Sydney",
+  "short_name": "goto.Sydney",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#6699FF",
+  "description": "goto.Sydney Public Transport",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "images/logo-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
